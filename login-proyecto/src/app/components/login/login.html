@@ -1,10 +1,8 @@
 <div class="login-container">
-    
-
     <form (ngSubmit)="login()" #loginForm="ngForm">
-        <h2>Iniciar Sesión</h2>
+        <h2>Welcome!</h2>
         <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Usuario</mat-label>
+        <mat-label>User</mat-label>
         <input
             matInput
             type="text"
@@ -12,21 +10,21 @@
             name="username"
             [(ngModel)]="username"
             required
-            placeholder="Ingrese usuario"        
+            placeholder="Enter your username"        
         />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Contraseña</mat-label>
+            <mat-label>Password</mat-label>
             <input
                 matInput
                 type="password"
                 name="password"
                 [(ngModel)]="password"
                 required
-                placeholder="Ingrese contraseña"
+                placeholder="Enter your password"
             />
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-raised-button color="primary" type="submit">Login!</button>
     </form>
 </div>
