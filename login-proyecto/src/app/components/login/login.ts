@@ -5,6 +5,7 @@ import { LoginServices } from '../../services/login.services';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
@@ -16,21 +17,39 @@ export class Login {
   password: string = '';
 
   login() {
-    console.log('Usuario:', this.username);
-    console.log('Password:', this.password);
 
-    if (this.username !== '' && this.password !== '') {
-      const objectRequest: LoginComponent = {
-        username: this.username,
-        password: this.password 
-      };
-
-      this.loginServices.doLogin(objectRequest).subscribe(entry => {
-        if (entry) {
-          console.log("login exitoso");
-        }
-      });
+    // 🔹 Validar espacios en blanco
+    if (this.username.trim() === '' || this.password.trim() === '') {
+      console.error("Usuario y contraseña son obligatorios");
+      return;
     }
 
+    // 🔹 Longitud mínima
+    if (this.username.length < 4) {
+      console.error("El usuario debe tener al menos 4 caracteres");
+      return;
+    }
+
+    if (this.password.length < 6) {
+      console.error("La contraseña debe tener al menos 6 caracteres");
+      return;
+    }
+
+    const objectRequest: LoginComponent = {
+      username: this.username,
+      password: this.password
+    };
+
+    this.loginServices.doLogin(objectRequest).subscribe({
+
+      next: (entry) => {
+        console.log("Login exitoso");
+      },
+
+      error: (err) => {
+        console.error("Credenciales incorrectas o error del servidor", err);
+      }
+
+    });
   }
 }
