@@ -2,29 +2,29 @@
     <h2>Iniciar Sesión</h2>
 
     <form (ngSubmit)="login()" #loginForm="ngForm">
-    
-    <div class="form-group">
-        <label>Usuario</label>
-            <input
+        <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input
+            matInput
             type="text"
             name="username"
             [(ngModel)]="username"
             required
-            placeholder="Ingrese usuario"
-            />
-    </div>
+            placeholder="Ingrese usuario"        
+        />
+        </mat-form-field>
 
-    <div class="form-group">
-        <label>Contraseña</label>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Contraseña</mat-label>
             <input
-            type="password"
-            name="password"
-            [(ngModel)]="password"
-            required
-            placeholder="Ingrese contraseña"
+                matInput
+                type="password"
+                name="password"
+                [(ngModel)]="password"
+                required
+                placeholder="Ingrese contraseña"
             />
-    </div>
-
-    <button type="submit">Login</button>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Login</button>
     </form>
 </div>
